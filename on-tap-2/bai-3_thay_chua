@@ -1,5 +1,6 @@
 #include <iostream>
 
+/*
 using namespace std;
 
 int n;
@@ -18,7 +19,7 @@ void initPrime()
         if(isPrime[i])
         {
         int j = i * i;
-            while j <= 1000000)
+            while (j <= 1000000)
             {
                 isPrime[j] = False;
                 j += i;
@@ -26,3 +27,4 @@ void initPrime()
             i++;
     }
 }
+*/
