@@ -3,6 +3,7 @@
 
 using namespace std;
 
+void bubbleSort(vector<int> times)
 {
     int n = times.size();
     
