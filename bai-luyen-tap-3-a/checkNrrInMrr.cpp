@@ -9,9 +9,9 @@ int BinarySearch(const vector<int>& Arr , int left , int right, int target)
     {
         int mid = left + (right - left) / 2;
 
-        if (arr[mid] == target) return true;
+        if (Arr[mid] == target) return true;
 
-        if (arr[min] < target) left = mid + 1;
+        if (Arr[mid] < target) left = mid + 1;
 
         else right = mid - 1;
     }
@@ -34,10 +34,10 @@ int main()
         
     for (int i = 0; i < n; i++)
     {
-        if (BinarySearch(Mrr, 0, m - 1, Nrr[i]) != -1) 
-            cout << "YES" << " ";
+        if (BinarySearch(Mrr, 0, m - 1, Nrr[i])) 
+            cout << "YES ";
         else 
-            cout << "NO" << " ";
+            cout << "NO ";
     }
     return 0;
 }
