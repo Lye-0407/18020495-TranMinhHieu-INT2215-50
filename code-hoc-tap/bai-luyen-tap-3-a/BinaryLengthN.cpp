@@ -20,7 +20,7 @@ int main() {
     int n;
     cin >> n;
 
-    if (n <= 10) 
+    if (n <= 10)
         generateBinaryStrings(n, "");
     return 0;
 }

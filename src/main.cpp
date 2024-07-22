@@ -43,7 +43,7 @@ int main( int argc, char* args[] )
 	}
 
 	//Destroy window
-	SDL_DestroyWindow( window );
+	SDL_DestroyWindow(window);
 
 	//Quit SDL subsystems
 	SDL_Quit();
