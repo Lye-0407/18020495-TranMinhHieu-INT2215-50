@@ -26,7 +26,7 @@ int main()
     int Tuso = abs(a) / gcd(abs(a),abs(b));
     int Mauso = abs(b) / gcd(abs(a),abs(b));
     
-    if (((a > 0) && (b < 0)) || ((a < 0) && (b > 0)))
+    if (((a > 0) && (b < 0)) || ((a < 0) && (b > 0))) /// if(a * b < 0)
     {
         if (Mauso == 1) 
             cout << '-' << Tuso;

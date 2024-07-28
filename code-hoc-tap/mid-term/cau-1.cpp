@@ -7,16 +7,17 @@ using namespace std;
 void arrange(int n, vector<int> N, int K)
 {
     sort(N.begin(),N.end());
-    for (int i = 0; i < n; i++)
-        for (int j = 0 ; j < n; j++)
-        {
-            do
+    
+        for (int i = 0; i < n; i++)
+            for (int j = 0 ; j < n; j++)
             {
-                if (N[i] + N[j] == K)
-                    cout << N[i] << " " << N[j] << endl;
+                do
+                {
+                    if (N[i] + N[j] == K)
+                        cout << N[i] << " " << N[j] << endl;
+                }
+                while (N[i] + N[j] < K);
             }
-            while (N[i] + N[j] < K);
-        }
     
 }
 
