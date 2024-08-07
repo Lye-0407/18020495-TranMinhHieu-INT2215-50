@@ -1,52 +1,47 @@
-#include <iostream>
 #include <SDL2/SDL.h>
-#include <stdio.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
+#include <iostream>
+#include <vector>
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-int main( int argc, char* args[] )
+bool init()
 {
-	//The window we'll be rendering to
-	SDL_Window* window = NULL;
-	
-	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+	if (SDL_Init(SDL_INIT_VIDEO) > 0)
+		std::cout << "HEY.. SDL_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+	if (!(IMG_Init(IMG_INIT_PNG)))
+		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
+	if (!(TTF_Init()))
+		std::cout << "TTF_init has failed. Error: " << SDL_GetError() << std::endl;
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	return true;
+}
 
-	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+void game()
+{
+	if (state == 0)
 	{
-		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+		titleScreen();
 	}
 	else
 	{
-		//Create window
-		window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( window == NULL )
-		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
-		}
-		else
-		{
-			//Get window surface
-			screenSurface = SDL_GetWindowSurface( window );
+		update();
+		graphics();
+	}
+}
 
-			//Fill the surface white
-			SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
-			
-			//Update the surface
-			SDL_UpdateWindowSurface( window );
-            
-            //Hack to get window to stay up
-            SDL_Event e; bool quit = false; while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
-		}
+int main(int argc, char* args[])
+{
+	loadLevel(level);
+	while (gameRunning)
+	{
+		game();
 	}
 
-	//Destroy window
-	SDL_DestroyWindow(window);
-
-	//Quit SDL subsystems
+	window.cleanUp();
+	TTF_CloseFont(font32);
+	TTF_CloseFont(font24);
 	SDL_Quit();
-
+	TTF_Quit();
 	return 0;
 }
