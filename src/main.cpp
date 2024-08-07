@@ -5,6 +5,12 @@
 #include <iostream>
 #include <vector>
 
+#include "RenderWindow.h"
+#include "Entity.h"
+#include "Ball.h"	
+#include "Tile.h"
+#include "Hole.h"
+
 bool init()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) > 0)
