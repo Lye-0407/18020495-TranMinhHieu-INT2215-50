@@ -25,7 +25,7 @@ bool init()
 
 bool SDLinit = init();
 
-RenderWindow window("Twini-Golf", 640, 480);
+RenderWindow window("Parallel-Golf", 640, 480);
 
 SDL_Texture* ballTexture = window.loadTexture("res/gfx/ball.png");
 SDL_Texture* holeTexture = window.loadTexture("res/gfx/hole.png");
@@ -133,7 +133,7 @@ bool secondSwingPlayed = false;
 
 SDL_Event event;
 
-int state = 0; //0 = title screen, 1 = game, 2 = end screen
+int state = 0; 
 
 Uint64 currentTick = SDL_GetPerformanceCounter();
 Uint64 lastTick = 0;
@@ -231,7 +231,6 @@ void update()
 	deltaTime = (double)((currentTick - lastTick)*1000 / (double)SDL_GetPerformanceFrequency() );
 
 	mousePressed = false;
-	//Get our controls and events
 	while (SDL_PollEvent(&event))
 	{
 		switch(event.type)
@@ -365,7 +364,6 @@ void titleScreen()
 		currentTick = SDL_GetPerformanceCounter();
 		deltaTime = (double)((currentTick - lastTick)*1000 / (double)SDL_GetPerformanceFrequency() );
 
-		//Get our controls and events
 		while (SDL_PollEvent(&event))
 		{
 			switch(event.type)
